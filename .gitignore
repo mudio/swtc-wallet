@@ -59,3 +59,9 @@ typings/
 
 # next.js build output
 .next
+
+# swtc project
+__dll
+__dist
+__release
+!__dist/package.json

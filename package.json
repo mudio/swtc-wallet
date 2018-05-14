@@ -1,0 +1,119 @@
+{
+  "name": "swtc-wallet",
+  "version": "1.0.0",
+  "description": "SwtcWallet ",
+  "main": "index.js",
+  "scripts": {
+    "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
+    "build-dll": "NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.renderer.dev.dll.js --colors",
+    "build-main": "NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.main.prod.js --colors",
+    "build-renderer": "NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.renderer.prod.js --colors",
+    "dev": "START_HOT=1 npm run start-renderer-dev",
+    "preview": "NODE_ENV=production electron ./dist/",
+    "package": "npm run build && build --publish never",
+    "package-all": "npm run build && build -mw",
+    "start-main-dev": "HOT=1 NODE_ENV=development electron -r babel-register ./app/main.dev",
+    "start-renderer-dev": "NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.renderer.dev.js"
+  },
+  "build": {
+    "productName": "SwtcWallet",
+    "appId": "com.jingtum.wallet",
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "files": [
+      "!*.{eot,ttf}"
+    ],
+    "directories": {
+      "buildResources": "resources",
+      "output": "__release",
+      "app": "__dist"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mudio/swtc-wallet.git"
+  },
+  "author": "木休大人 (523317421@qq.com)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/mudio/swtc-wallet/issues"
+  },
+  "homepage": "https://github.com/mudio/swtc-wallet#readme",
+  "dependencies": {
+    "devtron": "^1.4.0",
+    "electron-debug": "^1.5.0",
+    "font-awesome": "^4.7.0",
+    "history": "^4.7.2",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-hot-loader": "^4.1.3",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0",
+    "source-map-support": "^0.5.6"
+  },
+  "devDependencies": {
+    "asar": "^0.14.3",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "concurrently": "^3.5.1",
+    "css-loader": "^0.28.11",
+    "electron": "^2.0.0",
+    "electron-builder": "^20.13.3",
+    "electron-devtools-installer": "^2.2.4",
+    "electron-rebuild": "^1.7.3",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-formatter-pretty": "^1.3.0",
+    "eslint-import-resolver-webpack": "^0.9.0",
+    "eslint-plugin-compat": "^2.2.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.8.2",
+    "express": "^4.16.3",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "fbjs-scripts": "^0.8.3",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "redux-logger": "^3.0.6",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "url-loader": "^1.0.1",
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.11.3",
+    "webpack-dev-server": "^2.11.2",
+    "webpack-merge": "^4.1.2"
+  }
+}

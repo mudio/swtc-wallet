@@ -1,0 +1,9 @@
+{
+  "name": "swtc-wallet",
+  "productName": "SwtcWallet",
+  "version": "1.0.0",
+  "description": "SwtcWallet",
+  "main": "./main.prod.js",
+  "author": "木休大人",
+  "license": "GPL-3.0"
+}
