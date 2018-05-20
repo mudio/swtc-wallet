@@ -1,0 +1,89 @@
+/* *
+ * style - animate
+ *
+ * @file animate.css
+ * @author mudio(job.mudio@gmail.com)
+ */
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both
+}
+
+@keyframes fadeIn {
+    0% {
+        z-index: 900;
+        opacity: 0;
+    }
+
+    100% {
+        z-index: 900;
+        opacity: 0.8;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes shake {
+    from, to {
+        transform: translate3d(0, 0, 0);
+    }
+
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        transform: translate3d(-6px, 0, 0);
+    }
+
+    40% {
+        transform: translate3d(6px, 0, 0);
+    }
+
+    60% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    80% {
+        transform: translate3d(4px, 0, 0);
+    }
+
+    90% {
+        transform: translate3d(-2px, 0, 0);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translate3d(0,100%,0);
+        visibility: visible
+    }
+
+    to {
+        transform: translateZ(0)
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+    }
+}

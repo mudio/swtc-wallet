@@ -1,0 +1,66 @@
+
+.container {
+    width: 140px;
+    display: flex;
+    flex-flow: column;
+    background: #19233C;
+}
+
+.avatar {
+    display: flex;
+    flex-flow: column;
+    margin: 30px auto 0px auto;
+}
+
+.avatar img {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 10px auto;
+    border-radius: 40px;
+    border: 1px solid #fff;
+}
+
+.username {
+    color: #fff;
+    font-size: 14px;
+}
+
+.username :global(.fa) {
+    font-size: 16px;
+    color: #108cee;
+    border-radius: 3px;
+    padding: 3px 5px;
+    cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    flex-flow: column;
+    border-top: 1px solid #303B59;
+}
+
+.menu .item {
+    flex: auto;
+    color: #FFF;
+    line-height: 40px;
+    display: inline-flex;
+    padding: 0 10px 0 20px;
+    transition: all .3s;
+}
+
+.menu .item :global(.fa) {
+    font-size: 16px;
+    width: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu .active {
+    color: #42AAFA;
+    background: #121A2C;
+}
+
+.menu .item:hover {
+    background: #121A2C;
+}

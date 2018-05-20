@@ -1,22 +1,29 @@
 // @flow
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
+import PropTypes from 'prop-types';
+import {Provider} from 'react-redux';
+import React, {Component} from 'react';
+import {ConnectedRouter} from 'react-router-redux';
+
+import LoginPage from '../components/Login';
 import Routes from '../routes';
 
-type Props = {
-  store: {},
-  history: {}
-};
+export default class Root extends Component {
+    static propTypes = {
+        store: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired
+    };
 
-export default class Root extends Component<Props> {
-  render() {
-    return (
-      <Provider store={this.props.store}>
-        <ConnectedRouter history={this.props.history}>
-          <Routes />
-        </ConnectedRouter>
-      </Provider>
-    );
-  }
+    render() {
+        if (location.search.startsWith('?login')) {
+            return (<LoginPage />);
+        }
+
+        return (
+            <Provider store={this.props.store}>
+                <ConnectedRouter history={this.props.history}>
+                    <Routes />
+                </ConnectedRouter>
+            </Provider>
+        );
+    }
 }

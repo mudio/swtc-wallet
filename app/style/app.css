@@ -1,0 +1,63 @@
+/* *
+ * style - app
+ *
+ * @file app.css
+ * @author mudio(job.mudio@gmail.com)
+ */
+
+body {
+    display: flex;
+    height: 100vh;
+    font-size: 12px;
+    position: relative;
+    overflow-y: hidden;
+    font-family: Helvetica, Arial, serif;
+    margin: 0;
+}
+
+button, input, textarea, a, p, i, span, h1, h2, h3, li,
+.fa {
+    -webkit-app-region: no-drag;
+}
+
+a, a:focus {
+    text-decoration: none;
+}
+
+input, button {
+    outline: none;
+}
+
+#root {
+    flex: auto;
+    z-index: 0;
+    width: 100vw;
+    display: flex;
+    transition: filter .3s;
+}
+
+.app {
+    flex: auto;
+    display: flex;
+    flex-flow: column;
+}
+
+.content {
+    display: flex;
+    flex: auto;
+    background: #E8ECF0;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    -webkit-appearance: none;
+    -webkit-app-region: no-drag;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    -webkit-app-region: no-drag;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+}

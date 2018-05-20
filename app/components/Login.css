@@ -1,0 +1,95 @@
+
+.container {
+    flex: auto;
+    display: flex;
+    overflow: hidden;
+    background: #444c63;
+    flex-flow: column nowrap;
+    -webkit-app-region: drag;
+}
+
+.logo {
+    width: 80px;
+    margin: 30px auto 30px auto;
+    background: #fff;
+    border-radius: 60px;
+    border: 1px solid #fff;
+    animation: spin 3s linear infinite;
+}
+
+.loginform {
+    flex: auto;
+    display: flex;
+    margin: 0 20px;
+    position: relative;
+    flex-direction: column;
+}
+
+.loginform input {
+    font-size: 12px;
+    width: 100%;
+    line-height: 40px;
+    padding: 0;
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: #8692b2 1px solid;
+}
+
+.loginform input::-webkit-input-placeholder {
+    color: #8692b2;
+}
+
+.loginBtn {
+    right: 5px;
+    top: 50px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: absolute !important;
+}
+
+.loginBtn:hover svg {
+    fill: red;
+}
+
+.helplink {
+    cursor: pointer;
+    color: #8692B2;
+    line-height: 30px;
+    align-self: flex-start;
+}
+
+.helplink:hover {
+    color: #108cee;
+}
+
+.loading {
+    top: 50px;
+    right: 5px;
+    position: absolute !important;
+}
+
+.tip {
+    height: 30px;
+    align-self: center;
+}
+
+.tip .text :global {
+    display: inline-block;
+    padding: 0 10px;
+    color: #f66664;
+    line-height: 30px;
+    border-radius: 15px;
+    animation: shake both .3s;
+    background: rgba(41, 47, 65, .3);
+}
+
+.text.info {
+    color: #FFB129;
+    animation: inherit;
+}
+
+.title {
+    background: transparent !important;
+}

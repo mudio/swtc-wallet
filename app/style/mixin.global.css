@@ -1,0 +1,12 @@
+/* *
+ * style - mixin
+ *
+ * @file mixin.css
+ * @author mudio(job.mudio@gmail.com)
+ */
+
+@import "./tooltip.css";
+@import "./animate.css";
+@import '~antd/dist/antd.css';
+@import "~font-awesome/css/font-awesome.css";
+@import "./app.css";

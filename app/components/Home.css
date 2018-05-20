@@ -1,14 +1,37 @@
 .container {
-  position: absolute;
-  top: 30%;
-  left: 10px;
-  text-align: center;
+    flex: auto;
+    display: flex;
+    margin: 20px;
+    flex-flow: column;
 }
 
-.container h2 {
-  font-size: 5rem;
+.container div {
+    display: block;
 }
 
-.container a {
-  font-size: 1.4rem;
+.container img {
+    width: 80px;
+    height: 80px;;
+    border: 1px solid #efefef;
+}
+
+.container :global(.ant-row) {
+    width: 100%;
+    margin-top: 10px;
+}
+
+div.summary {
+    display: flex;
+}
+
+div.summary table {
+    margin-left: 16px;
+}
+
+div.summary td {
+    height: 30px;
+}
+
+div.summary td:nth-child(even) {
+    padding-right: 20px;
 }

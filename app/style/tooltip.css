@@ -1,0 +1,98 @@
+/* *
+ * style - tooltip，基于console/dep/inf-style生成
+ *
+ * @file tooltip.less
+ * @author mudio(job.mudio@gmail.com)
+ */
+
+[data-tip] {
+  position: relative;
+}
+
+[data-tip]:after {
+  top: 50%;
+  left: 100%;
+  width: auto;
+  opacity: 0;
+  z-index: 1;
+  display: block;
+  padding: 0 4px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  white-space: pre;
+  line-height: 18px;
+  position: absolute;
+  visibility: hidden;
+  content: attr(data-tip);
+  transition: all .3s;
+  transform: translate(-5px, -50%);
+  background-color: rgba(18, 26, 44, 0.8);
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+}
+
+[data-tip]:hover {
+  overflow: visible;
+}
+
+[data-tip]:hover:after {
+  opacity: 0.8;
+  display: block;
+  visibility: visible;
+  -webkit-transform: translate(5px, -50%);
+  transform: translate(5px, -50%);
+}
+
+[data-tip].tip-top:after,
+[data-tip][data-tip-align="top"]:after {
+  top: auto;
+  left: 50%;
+  bottom: 100%;
+  -webkit-transform: translate(-50%, 5px);
+  transform: translate(-50%, 5px);
+}
+
+[data-tip].tip-top:hover:after,
+[data-tip][data-tip-align="top"]:hover:after {
+  -webkit-transform: translate(-50%, -5px);
+  transform: translate(-50%, -5px);
+}
+
+[data-tip].tip-bottom:after,
+[data-tip][data-tip-align="bottom"]:after {
+  top: 100%;
+  left: 50%;
+  bottom: auto;
+  -webkit-transform: translate(-50%, -5px);
+  transform: translate(-50%, -5px);
+}
+
+[data-tip].tip-bottom:hover:after,
+[data-tip][data-tip-align="bottom"]:hover:after {
+  -webkit-transform: translate(-50%, 5px);
+  transform: translate(-50%, 5px);
+}
+
+[data-tip].tip-left:after,
+[data-tip][data-tip-align="left"]:after {
+  top: 50%;
+  right: 100%;
+  left: auto;
+  bottom: auto;
+  -webkit-transform: translate(5px, -50%);
+  transform: translate(5px, -50%);
+}
+
+[data-tip].tip-left:hover:after,
+[data-tip][data-tip-align="left"]:hover:after {
+  -webkit-transform: translate(-5px, -50%);
+  transform: translate(-5px, -50%);
+}
+
+[data-tip].tip-disable:after {
+  visibility: hidden !important;
+}
+
+[tip=""]:after {
+  visibility: hidden !important;
+}
