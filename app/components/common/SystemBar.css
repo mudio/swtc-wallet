@@ -2,6 +2,7 @@
 .container {
     height: 25px;
     display: flex;
+    flex-shrink: 0;
     justify-content: flex-end;
     -webkit-app-region: drag;
     background: #121A2C;

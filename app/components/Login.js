@@ -14,7 +14,7 @@ import React, {Component} from 'react';
 import styles from './Login.css';
 import Button from './common/Button';
 import SystemBar from './common/SystemBar';
-import {Transport, Account} from '../client';
+import {Account} from '../client';
 import BrowserLink from './common/BrowserLink';
 
 const akskHelpLink = 'https://app.jingtumlab.com/#/user/register';
@@ -25,7 +25,7 @@ export default class Login extends Component {
 
     constructor(...args) {
         super(...args);
-        this.state = {ak: '18604939602', sk: 'Btc0822@jingtum', loading: false, msg: '请输入登录信息！'};
+        this.state = {ak: '', sk: '', loading: false, msg: '请输入登录信息！'};
     }
 
     componentWillMount() {
@@ -48,7 +48,7 @@ export default class Login extends Component {
 
         try {
             this.setState({loading: true});
-            const auth = await Transport.validate(ak, sk);
+            const auth = await Account.validate(ak, sk);
 
             Account.save(auth);
 

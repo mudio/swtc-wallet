@@ -34,6 +34,7 @@
       "promise/catch-or-return": "error",
       "promise/no-native": "off",
       "react/jsx-indent": "off",
+      "react/jsx-indent-props": "off",
       "react/sort-comp": ["error", {
         "order": ["type-annotations", "static-methods", "lifecycle", "everything-else", "render"]
       }],

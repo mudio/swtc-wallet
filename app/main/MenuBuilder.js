@@ -2,14 +2,11 @@
 import {
     app,
     Menu,
-    shell,
-    BrowserWindow
+    shell
 } from 'electron';
 
 export default class MenuBuilder {
-    mainWindow: BrowserWindow;
-
-    constructor(mainWindow: BrowserWindow) {
+    constructor(mainWindow) {
         this.mainWindow = mainWindow;
     }
 
@@ -49,9 +46,10 @@ export default class MenuBuilder {
 
     buildDarwinTemplate() {
         const subMenuAbout = {
-            label: 'Electron',
-            submenu: [{
-                    label: 'About ElectronReact',
+            label: 'SwtcWallet',
+            submenu: [
+                {
+                    label: 'About Wallet',
                     selector: 'orderFrontStandardAboutPanel:'
                 },
                 {
@@ -65,7 +63,7 @@ export default class MenuBuilder {
                     type: 'separator'
                 },
                 {
-                    label: 'Hide ElectronReact',
+                    label: 'Hide',
                     accelerator: 'Command+H',
                     selector: 'hide:'
                 },
@@ -91,8 +89,9 @@ export default class MenuBuilder {
             ]
         };
         const subMenuEdit = {
-            label: 'Edit',
-            submenu: [{
+            label: '编辑',
+            submenu: [
+                {
                     label: 'Undo',
                     accelerator: 'Command+Z',
                     selector: 'undo:'
@@ -129,7 +128,8 @@ export default class MenuBuilder {
         };
         const subMenuViewDev = {
             label: 'View',
-            submenu: [{
+            submenu: [
+                {
                     label: 'Reload',
                     accelerator: 'Command+R',
                     click: () => {
@@ -153,24 +153,27 @@ export default class MenuBuilder {
             ]
         };
         const subMenuViewProd = {
-            label: 'View',
-            submenu: [{
-                label: 'Toggle Full Screen',
-                accelerator: 'Ctrl+Command+F',
-                click: () => {
-                    this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
+            label: '视图',
+            submenu: [
+                {
+                    label: '全屏切换',
+                    accelerator: 'Ctrl+Command+F',
+                    click: () => {
+                        this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
+                    }
                 }
-            }]
+            ]
         };
         const subMenuWindow = {
-            label: 'Window',
-            submenu: [{
-                    label: 'Minimize',
+            label: '窗口',
+            submenu: [
+                {
+                    label: '最小化',
                     accelerator: 'Command+M',
                     selector: 'performMiniaturize:'
                 },
                 {
-                    label: 'Close',
+                    label: '关闭',
                     accelerator: 'Command+W',
                     selector: 'performClose:'
                 },
@@ -178,35 +181,30 @@ export default class MenuBuilder {
                     type: 'separator'
                 },
                 {
-                    label: 'Bring All to Front',
+                    label: '窗口前置',
                     selector: 'arrangeInFront:'
                 }
             ]
         };
         const subMenuHelp = {
-            label: 'Help',
-            submenu: [{
-                    label: 'Learn More',
+            label: '关于',
+            submenu: [
+                {
+                    label: 'SWTC Web',
                     click() {
-                        shell.openExternal('http://electron.atom.io');
+                        shell.openExternal('https://app.jingtumlab.com');
                     }
                 },
                 {
-                    label: 'Documentation',
+                    label: '社区',
                     click() {
-                        shell.openExternal('https://github.com/atom/electron/tree/master/docs#readme');
+                        shell.openExternal('http://bbswtc.com');
                     }
                 },
                 {
-                    label: 'Community Discussions',
+                    label: '问题反馈',
                     click() {
-                        shell.openExternal('https://discuss.atom.io/c/electron');
-                    }
-                },
-                {
-                    label: 'Search Issues',
-                    click() {
-                        shell.openExternal('https://github.com/atom/electron/issues');
+                        shell.openExternal('https://github.com/mudio/swtc-wallet/issues');
                     }
                 }
             ]

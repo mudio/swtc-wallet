@@ -1,0 +1,34 @@
+
+.container {
+    display: flex;
+    flex: auto;
+}
+
+.container > div {
+    flex: auto;
+    overflow: auto;
+    display: flex;
+    flex-flow: column;
+    border: 1px solid #d3d3d3;
+}
+
+.container table {
+    width: 100%;
+}
+
+.container td {
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.container td:first-child {
+    text-align: center;
+}
+
+.container td:last-child {
+    color: #838383
+}
+
+.container thead {
+    line-height: 30px;
+    background: #e6e5e5;
+}

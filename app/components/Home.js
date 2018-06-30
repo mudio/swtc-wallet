@@ -6,7 +6,7 @@
 import * as Rx from 'rxjs';
 import React, {Component} from 'react';
 import {Card, Col, Row, Table} from 'antd';
-import {flatMap, map} from 'rxjs/operators';
+import {flatMap, map, startWith} from 'rxjs/operators';
 
 import {Wallet, Account} from '../client';
 import styles from './Home.css';
@@ -21,17 +21,20 @@ export default class Home extends Component {
     constructor(...args) {
         super(...args);
 
-        const {type, authInfo} = Account.fromStroage();
+        const {credentials, auth} = Account.fromStroage();
 
-        this.state = {balances: [], loading: true, type, authInfo};
+        this.state = {balances: [], loading: true, auth, credentials};
     }
 
     componentDidMount() {
         this._interval = Rx.interval(3000)
-            .pipe(flatMap(() => Wallet.getBalances()))
-            .pipe(map(
-                x => x.map((item, key) => Object.assign(item, {key}))
-            ))
+            .pipe(
+                startWith(Wallet.getBalances()),
+                flatMap(() => Wallet.getBalances()),
+                map(
+                    x => x.map((item, key) => Object.assign(item, {key}))
+                )
+            )
             .subscribe(balances => this.setState({balances, loading: false}));
     }
 
@@ -39,12 +42,11 @@ export default class Home extends Component {
         this._interval.unsubscribe();
     }
 
-    render() {
-        const {balances, loading, authInfo} = this.state;
-        const {publickey, username, realname, phone, verified, avatar} = authInfo;
+    renderAuthRow() {
+        if (this.state.auth) {
+            const {username, realname, phone, verified, avatar} = this.state.auth;
 
-        return (
-            <div className={styles.container} data-tid="container">
+            return (
                 <Row gutter={8}>
                     <Col>
                         <Card hoverable>
@@ -71,13 +73,25 @@ export default class Home extends Component {
                         </Card>
                     </Col>
                 </Row>
+            );
+        }
+
+        return null;
+    }
+
+    render() {
+        const {credentials, balances, loading} = this.state;
+
+        return (
+            <div className={styles.container} data-tid="container">
+                {this.renderAuthRow()}
                 <Row gutter={8}>
                     <Col>
                         <Card hoverable>
                             <Card.Meta
                                 title="钱包地址"
-                                description={publickey}
-                                avatar={<img src={`http://www.gbtags.com/gb/qrcode?t=${publickey}`} />}
+                                description={credentials.address}
+                                avatar={<img alt="" src={`http://www.gbtags.com/gb/qrcode?t=${credentials.adress}`} />}
                             />
                         </Card>
                     </Col>
@@ -90,7 +104,8 @@ export default class Home extends Component {
                                 columns={columns}
                                 pagination={false}
                                 loading={loading}
-                                dataSource={balances} />
+                                dataSource={balances}
+                            />
                         </Card>
                     </Col>
                 </Row>

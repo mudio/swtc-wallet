@@ -7,6 +7,5 @@
 
 export {default as Wallet} from './Wallet';
 export {default as Account} from './Account';
+export {default as TradeClient} from './Trade';
 export {default as Transport} from './Transport';
-
-

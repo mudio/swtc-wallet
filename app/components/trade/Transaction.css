@@ -1,0 +1,22 @@
+.container {
+    height: 200px;
+    overflow: auto;
+    padding: 20px !important;
+    color: #bacadd !important;
+}
+
+.container :global(.ant-timeline-item) {
+    font-size: 12px;
+}
+
+.container p {
+    margin: 0;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #108cee;
+}

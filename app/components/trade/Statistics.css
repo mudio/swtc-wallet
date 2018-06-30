@@ -1,0 +1,15 @@
+
+.container {
+    display: flex;
+    flex-shrink: 0;
+    color: #bacadd;
+    line-height: 30px;
+    background: #232b34;
+}
+
+.container span {
+    flex: auto;
+    justify-content: center;
+    display: inline-flex;
+    -webkit-app-region: drag;
+}

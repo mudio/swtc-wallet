@@ -1,0 +1,37 @@
+
+.container {
+    display: flex;
+    flex: auto;
+    flex-flow: column;
+}
+
+.content {
+    flex: auto;
+    display: flex;
+}
+
+.trade {
+    display: flex;
+    height: 200px;
+    flex-shrink: 0;
+    color: #fff;
+    background: #232b34;
+}
+
+.trade :global(.ant-tabs) {
+    flex: auto;
+}
+
+.trade :global(.ant-tabs-nav-wrap) {
+    color: #fff;
+    background: #1b2229;
+}
+
+.trade :global(.ant-tabs-tab-active) {
+    color: #fff !important;
+    background: #3669a7;
+}
+
+.trade :global(.ant-tabs-content) {
+    padding: 0 !important;
+}

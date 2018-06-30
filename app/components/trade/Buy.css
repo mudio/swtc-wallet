@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    font-size: 12px;
+    color: #bacadd;
+    flex-flow: column;
+    padding: 10px;
+}
+
+.container :global(.ant-btn-buy) {
+    background: #28b869 !important;
+}
+
+.container :global(.ant-btn-sell) {
+    background: #ee4a4a !important;
+}
+
+.container :global(.ant-btn) {
+    color: #fff;
+    border: none;
+    margin-left: 20px;
+}
+
+.container :global(.ant-btn:hover) {
+    opacity: .8;
+    color: #fff;
+}
+
+.item {
+    display: flex;
+    line-height: 24px;
+}
+
+.item :global(.ant-input-group-addon) {
+    color: #bacadd;
+    border: none;
+    font-size: 12px;
+    background: #1b2229 !important;
+}
+
+.item input {
+    color: #09bafa;
+    font-size: 12px;
+    border: none;
+    background: #1b2229 !important;
+}
+
+.item:first-child {
+    background: #1b2229;
+    padding-left: 10px;
+    border-radius: 3px;
+}
+
+.item + .item {
+    margin-top: 10px;
+}
+
+.balances {
+    color: #09bafa;
+    padding-left: 20px;
+}

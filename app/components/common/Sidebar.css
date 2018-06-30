@@ -4,6 +4,7 @@
     display: flex;
     flex-flow: column;
     background: #19233C;
+    -webkit-app-region: drag;
 }
 
 .avatar {
@@ -25,12 +26,21 @@
     font-size: 14px;
 }
 
+.username span {
+    max-width: 90px;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 24px;
+    vertical-align: middle;
+}
+
 .username :global(.fa) {
     font-size: 16px;
     color: #108cee;
-    border-radius: 3px;
-    padding: 3px 5px;
+    padding: 0px 5px;
     cursor: pointer;
+    line-height: 24px;
+    vertical-align: middle;
 }
 
 .menu {

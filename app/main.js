@@ -70,15 +70,19 @@ app.on('ready', async () => {
     _window = WindowManager.fromLogin(`file://${__dirname}/app.html?login`);
     // 监听通知
     ipcMain.on('notify', (evt, type) => {
-        _window.close();
-
         if (type === 'login_success') {
-            _window = WindowManager.fromApp(`file://${__dirname}/app.html#/home`);
+            const window = WindowManager.fromApp(`file://${__dirname}/app.html#/home`);
+            _window.close();
+            _window = window;
         } else if (type === 'logout') {
-            _window = WindowManager.fromLogin(`file://${__dirname}/app.html?login`);
+            const window = WindowManager.fromLogin(`file://${__dirname}/app.html?login`);
+            _window.close();
+            _window = window;
         }
 
-        _window.openDevTools();
+        if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
+            _window.openDevTools();
+        }
     });
 
     const menuBuilder = new MenuBuilder(_window);

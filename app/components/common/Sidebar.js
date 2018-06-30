@@ -5,26 +5,46 @@
  * @author mudio(job.mudio@gmail.com)
  */
 
+import {ipcRenderer} from 'electron';
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 
 import styles from './Sidebar.css';
 import {Account} from '../../client';
 
-export default class BrowserLink extends Component {
-    static propTypes = {
+export default class Sidebar extends Component {
+    constructor(...args) {
+        super(...args);
+
+        const {credentials, auth = {}} = Account.fromStroage();
+
+        this.state = {auth, credentials};
     }
 
-    renderApiPage({avatar, email, phone, publickey, realname, username}) {
+    _logout() {
+        ipcRenderer.send('notify', 'logout');
+    }
+
+    renderAvatar = () => {
+        const {credentials, auth} = this.state;
+        const {avatar, username} = auth;
+        const {address} = credentials;
+
+        return (
+            <div className={styles.avatar} >
+                <img alt="" src={avatar || `http://www.gbtags.com/gb/qrcode?t=${credentials.adress}`} />
+                <p className={styles.username}>
+                    <span>{username || address}</span>
+                    <i className="fa fa-sign-out" aria-hidden="true" data-tip="登出" onClick={this._logout} />
+                </p>
+            </div>
+        );
+    }
+
+    render() {
         return (
             <div className={styles.container}>
-                <div className={styles.avatar} >
-                    <img alt="1" src={avatar} />
-                    <p className={styles.username}>
-                        {username}
-                        <i className="fa fa-sign-out" aria-hidden="true" data-tip="登出" />
-                    </p>
-                </div>
+                {this.renderAvatar()}
                 <div className={styles.menu}>
                     <NavLink to="/home" className={styles.item} activeClassName={styles.active}>
                         <i className="fa fa-address-book-o" aria-hidden="true" />
@@ -49,19 +69,5 @@ export default class BrowserLink extends Component {
                 </div>
             </div>
         );
-    }
-
-    renderSDKPage() {
-        return null;
-    }
-
-    render() {
-        const {type, result} = Account.fromStroage();
-
-        if (type === 'PROXY_API') {
-            return this.renderApiPage(result);
-        }
-
-        return this.renderSDKPage(result);
     }
 }
